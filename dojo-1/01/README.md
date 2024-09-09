@@ -2,48 +2,50 @@
 PCのDockerで起動したWebサーバーにスマホのブラウザでアクセスしてみましょう。
 
 
-# (1)nginxのdocker imageの資料を見てnginxのdockerコンテナを起動する
+# 回答
 
-docker hubに記載されている`How to use this image`を参考にする。<br>
+## 1. nginxのdockerコンテナを起動する
+
+docker hubに記載されている`How to use this image`を参考にしてnginxのコンテナを起動します。<br>
 https://hub.docker.com/_/nginx
 
-### (1-1)Dockerfileとstatic-html-directoryディレクトリを作成する。
-以下のような構造になるように作成する。
+### 1-a. Dockerfileとstatic-html-directoryディレクトリを作成する。
+以下のような構造になるように作成します。
 ```
 .
 ├── Dockerfile
 └── static-html-directory
 ```
 
-### (1-2)Dockerfileを記述
+### 1-b. Dockerfileを記述
 ```
 FROM nginx
 COPY ../static-html-directory /usr/share/nginx/html
 ```
 
-### (1-3)buildのコマンドを実行
+### 1-c. buildのコマンドを実行
 `docker build -t some-content-nginx .`
 
-### (1-4)dockerコンテナを動かす
+### 1-d. dockerコンテナを動かす
 some-nginxという名前でnginxコンテナを起動する。<br>
-8080をコンテナの80番ポートにマッピングする<br>
+8080をコンテナの80番ポートにマッピングする。<br>
 `docker run --name some-nginx -d -p 8080:80 some-content-nginx`
 
-### (1-5)PCのブラウザでhttp://localhost:8080を開く
+### 1-e. PCのブラウザでhttp://localhost:8080を開く
 `http://localhost:8080`<br>
 nginxが立ち上がっていることを確認
 
-# (2)ifconfigで自分のPCのIPを確認する
+## 2. ifconfigで自分のPCのIPを確認する
 `ifconfig`<br>
 ※en0のところに書いてあるIPアドレスを確認する。<br>
 
 今回は`192.168.142.45`でした。
 
-# (3)スマホをPCと同じwifiに接続し、PCのIPと8080ポートにアクセスする。
+## 3. スマホをPCと同じwifiに接続し、PCのIPと8080ポートにアクセスする。
 
 `192.168.142.45:8080`
 
-## (8)表示される
+## 4. 表示される
 <img src="./images/Image.jpeg">
 
 
