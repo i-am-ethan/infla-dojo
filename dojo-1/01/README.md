@@ -2,7 +2,8 @@
 PCのDockerで起動したWebサーバーにスマホのブラウザでアクセスしてみましょう。
 
 
-# (1)nginxのdocker imageの資料を見てnginxのdockerコンテナを起動するnginxの
+# (1)nginxのdocker imageの資料を見てnginxのdockerコンテナを起動する
+
 docker hubに記載されている`How to use this image`を参考にする。<br>
 https://hub.docker.com/_/nginx
 
@@ -25,7 +26,7 @@ COPY ../static-html-directory /usr/share/nginx/html
 
 ### (1-4)dockerコンテナを動かす
 some-nginxという名前でnginxコンテナを起動する。<br>
-8080をコンテナの80万ポートにマッピングする<br>
+8080をコンテナの80番ポートにマッピングする<br>
 `docker run --name some-nginx -d -p 8080:80 some-content-nginx`
 
 ### (1-5)PCのブラウザでhttp://localhost:8080を開く
